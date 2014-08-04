@@ -14,8 +14,11 @@ var BlhSalesDemo = function(links) {
 };
 
 BlhSalesDemo.prototype.highlightDemo = function(e, links, self) {
+    $('.demo-link').unbind('click').on('click', function(e) {
+        e.preventDefault();
+        return false;
+    }); // Disable click on the menu
     var target = e.target.attributes.href.value; // the Target element
-    //$('.demo-link').unbind('click'); // Disable click on the menu **FIX THIS**
     // Get positioning of the content box
     var offsetAndWidth = $('#page').contents().find('.' + target).offset();
     var contentHeight = $('#page').contents().find('.' + target).height();
@@ -103,6 +106,12 @@ $(function () {
             selector : 'hero',
             position : 'bottom',
             content : '<p>Some Content</p>'
+        },
+        headerHeadline : {
+            text : 'Header Headline',
+            selector : 'headerHeadline',
+            position : 'bottom',
+            content : '<h1>Sweet!</h1>'
         }
     };
 
